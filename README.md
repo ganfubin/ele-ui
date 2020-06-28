@@ -16,3 +16,23 @@
 - [ ] 6.分页组件 UPage
 - [ ] 7.text-tooltip组件 UTextTooltip
 - [ ] 8.render组件 URender
+
+#项目运行
+
+step1
+```javascript
+ npm i
+```
+
+step2
+```javascript
+ npm run dev
+ npm run start
+```
+
+step3
+```javascript
+ npm run analyz
+```
+
+
