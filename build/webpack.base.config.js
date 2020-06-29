@@ -17,7 +17,7 @@ function resolve(relatedPath) {
 let plugins = [
   new HtmlWebpackPlugin({
     filename: 'index.html',
-    title: 'vue webapck demo',
+    title: 'VUE ELE UI',
     template: resolve('../index.html'),
     //favicon: resolve('../favicon.ico'),
     hash: true,
@@ -108,15 +108,7 @@ module.exports = {
               }
             },
           },
-          'less-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [
-                //resolve('../src/r-common-module/assets/css/variables.less')
-              ]
-            }
-          },
+          'less-loader'
         ],
       },
       {

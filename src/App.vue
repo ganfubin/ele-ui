@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    page
+    <v-layout></v-layout>
   </div>
 </template>
 <script>
-  export default {}
+  import VLayout from './layout/index'
+  export default {
+    components: {
+      VLayout
+    }
+  }
 </script>

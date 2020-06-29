@@ -26,7 +26,6 @@ step1
 
 step2
 ```javascript
- npm run dev
  npm run start
 ```
 
