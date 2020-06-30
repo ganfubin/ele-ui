@@ -6,7 +6,7 @@ const webpackConfigBase = require('./webpack.base.config');
 
 module.exports = merge(webpackConfigBase, {
   mode: 'development',
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -14,11 +14,11 @@ module.exports = merge(webpackConfigBase, {
     historyApiFallback: true,
     overlay: true,
     hot: true,
-    contentBase: path.join(__dirname, "..", "dist"),
+    contentBase: path.join(__dirname, '..', 'dist'),
     useLocalIp: true,
     host: '0.0.0.0',
     port: 3001,
     compress: true,
     disableHostCheck: true,
-  }
+  },
 });

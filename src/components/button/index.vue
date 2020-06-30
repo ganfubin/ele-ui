@@ -4,14 +4,14 @@
   </el-button>
 </template>
 <script>
-  export default {
-    data() {
-      return {};
-    },
-    methods: {
-      handleClick() {
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    handleClick() {
 
-      }
     },
-  };
+  },
+};
 </script>

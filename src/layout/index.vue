@@ -20,58 +20,62 @@
 </template>
 
 <script>
-  import VMenu from './menu.vue'
+import VMenu from './menu.vue';
 
-  const menus = [
-    {
-      components: () => import('../views/button.vue'),
-      name: 'VButton',
-      title: 'Button 按钮',
-      active: true
-    },
-    {
-      components: () => import('../views/input.vue'),
-      title: 'Input 输入',
-      active: false
-    }, {
-      components: () => import('../views/search.vue'),
-      title: 'Search 搜索组件',
-      active: false
-    }, {
-      components: () => import('../views/page.vue'),
-      title: 'Page 分页',
-      active: false
-    }, {
-      components: () => import('../views/table.vue'),
-      title: 'Table 表格',
-      active: false
-    }]
-  const components = {};
-  menus.forEach((menu) => {
-    if (menu.components) {
-      components[menu.name] = menu.components
-    }
-  })
-  export default {
-    name: "index.vue",
-    components: {
-      VMenu,
-      ...components
-    },
-    data() {
-      return {
-        menus,
-        comName: 'VButton'
-      }
-    },
-    methods: {
-      onMenuClick(menu) {
-        if (menu.name && menu.components) {
-          this.comName = menu.name
-        }
-      }
-    }
+const menus = [
+  {
+    components: () => import('../views/button.vue'),
+    name: 'pageButton',
+    title: 'Button 按钮',
+    active: true,
+  },
+  {
+    components: () => import('../views/input.vue'),
+    name: 'pageInput',
+    title: 'Input 输入',
+    active: false,
+  }, {
+    components: () => import('../views/search.vue'),
+    name: 'pageSearch',
+    title: 'Search 搜索组件',
+    active: false,
+  }, {
+    components: () => import('../views/page.vue'),
+    name: 'pagePage',
+    title: 'Page 分页',
+    active: false,
+  }, {
+    components: () => import('../views/table.vue'),
+    name: 'pageTable',
+    title: 'Table 表格',
+    active: false,
+  }];
+const components = {};
+menus.forEach((menu) => {
+  if (menu.components) {
+    components[menu.name] = menu.components;
   }
+});
+export default {
+  name: 'index.vue',
+  components: {
+    VMenu,
+    ...components,
+  },
+  data() {
+    return {
+      menus,
+      comName: 'pageButton',
+    };
+  },
+  methods: {
+    onMenuClick(menu) {
+      if (menu.name && menu.components) {
+        this.comName = menu.name;
+      }
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>

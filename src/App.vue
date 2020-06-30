@@ -4,10 +4,11 @@
   </div>
 </template>
 <script>
-  import VLayout from './layout/index'
-  export default {
-    components: {
-      VLayout
-    }
-  }
+import VLayout from './layout/index';
+
+export default {
+  components: {
+    VLayout,
+  },
+};
 </script>

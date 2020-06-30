@@ -1,46 +1,44 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-const package = require('../package.json')
-let version = Date.now();
-let NODE_ENV = process.env.NODE_ENV;
-let isDev = NODE_ENV === 'dev';
-
+const version = Date.now();
+const NODE_ENV = process.env.NODE_ENV;
+const isDev = NODE_ENV === 'dev';
 
 function resolve(relatedPath) {
-  return path.join(__dirname, relatedPath)
+  return path.join(__dirname, relatedPath);
 }
 
-let plugins = [
+const plugins = [
   new HtmlWebpackPlugin({
     filename: 'index.html',
     title: 'VUE ELE UI',
     template: resolve('../index.html'),
-    //favicon: resolve('../favicon.ico'),
+    // favicon: resolve('../favicon.ico'),
     hash: true,
     inject: true,
     minify: {
       removeComments: true,
       collapseWhitespace: true,
-      removeAttributeQuotes: true
-    }
+      removeAttributeQuotes: true,
+    },
   }),
   new VueLoaderPlugin(),
   new webpack.DefinePlugin({
-    'process.env': JSON.stringify(process.env)
-  })
+    'process.env': JSON.stringify(process.env),
+  }),
 ];
 
 if (!isDev) {
   plugins.push(
-    new miniCssExtractPlugin({
+    new MiniCssExtractPlugin({
       filename: `[name].[hash:5].${version}.css`,
-      chunkFilename: `css/[name].[hash:5].${version}.css`
-    })
-  )
+      chunkFilename: `css/[name].[hash:5].${version}.css`,
+    }),
+  );
 }
 
 module.exports = {
@@ -53,28 +51,28 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
-      'vue': 'vue/dist/vue.js',
-      '@': resolve('../src')
-    }
+      vue: 'vue/dist/vue.js',
+      '@': resolve('../src'),
+    },
   },
   plugins,
   optimization: {
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
       cacheGroups: {
         libs: {
-          name: "chunk-libs",
+          name: 'chunk-libs',
           test: /[\\/]node_modules[\\/]/,
           priority: 10,
-          chunks: "initial"
+          chunks: 'initial',
         },
         elementUI: {
-          name: "element-ui",
+          name: 'element-ui',
           priority: 20,
-          test: /[\/]node_modules[\/]element-ui[\/]/
+          test: /[\/]node_modules[\/]element-ui[\/]/,
         },
-      }
-    }
+      },
+    },
   },
   module: {
     rules: [
@@ -86,29 +84,29 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          isDev ? 'style-loader' : {loader: miniCssExtractPlugin.loader},
-          {loader: 'css-loader?importLoaders=1'},
-        ]
+          isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader?importLoaders=1' },
+        ],
       },
       {
         test: /\.less$/,
         use: [
           isDev ? 'style-loader' : {
-            loader: miniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
-            }
+              publicPath: '../',
+            },
           },
           'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: path.resolve(__dirname, './postcss.config.js')
-              }
+                path: path.resolve(__dirname, './postcss.config.js'),
+              },
             },
           },
-          'less-loader'
+          'less-loader',
         ],
       },
       {
@@ -117,16 +115,16 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           loaders: {
-            'less': [
+            less: [
               'vue-style-loader',
               'css-loader',
-              'less-loader?indentedSyntax'
-            ]
+              'less-loader?indentedSyntax',
+            ],
           },
           compilerOptions: {
-            preserveWhitespace: false
-          }
-        }
+            preserveWhitespace: false,
+          },
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -136,13 +134,13 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]?[hash]',
-              outputPath: 'images/'
-            }
+              outputPath: 'images/',
+            },
           },
-        ]
+        ],
       },
-      {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
-    ]
-  }
+      { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader' },
+    ],
+  },
 
 };

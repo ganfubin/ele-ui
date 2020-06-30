@@ -7,28 +7,28 @@
 </template>
 
 <script>
-  export default {
-    name: "menu.vue",
-    props: {
-      menus: Array
+export default {
+  name: 'menu.vue',
+  props: {
+    menus: Array,
+  },
+  data() {
+    return {
+    };
+  },
+  methods: {
+    menuClick(menuIndex, menu) {
+      const menus = [...this.menus].map((item, index) => {
+        return {
+          ...item,
+          active: index === menuIndex,
+        };
+      });
+      this.$emit('update:menus', menus);
+      this.$emit('onMenuClick', menu);
     },
-    data() {
-      return {
-      }
-    },
-    methods: {
-      menuClick(menuIndex, menu) {
-        let menus = [...this.menus].map((item, index) => {
-          return {
-            ...item,
-            active: index === menuIndex
-          }
-        })
-        this.$emit('update:menus', menus)
-        this.$emit('onMenuClick', menu)
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style lang="less" scoped>
