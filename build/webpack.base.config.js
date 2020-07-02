@@ -3,6 +3,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const marked = require('marked');
+
+const renderer = new marked.Renderer();
 
 const version = Date.now();
 const NODE_ENV = process.env.NODE_ENV;
@@ -27,6 +31,7 @@ const plugins = [
     },
   }),
   new VueLoaderPlugin(),
+  new LodashModuleReplacementPlugin(),
   new webpack.DefinePlugin({
     'process.env': JSON.stringify(process.env),
   }),
@@ -125,6 +130,21 @@ module.exports = {
             preserveWhitespace: false,
           },
         },
+      },
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'markdown-loader',
+            options: {
+              pedantic: true,
+              renderer,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

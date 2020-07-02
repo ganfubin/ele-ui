@@ -8,7 +8,7 @@
 后期通过npm的形式发布
 
 #TODO
-- [ ] 1.table组件 UTable
+- [x] 1.table组件 UTable
 - [ ] 2.form组件 UForm
 - [ ] 3.按钮组件 UButton
 - [ ] 4.图标组件 UIcon
