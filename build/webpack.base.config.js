@@ -8,7 +8,6 @@ const marked = require('marked');
 
 const renderer = new marked.Renderer();
 
-const version = Date.now();
 const NODE_ENV = process.env.NODE_ENV;
 const isDev = NODE_ENV === 'dev';
 
@@ -40,8 +39,8 @@ const plugins = [
 if (!isDev) {
   plugins.push(
     new MiniCssExtractPlugin({
-      filename: `[name].[hash:5].${version}.css`,
-      chunkFilename: `css/[name].[hash:5].${version}.css`,
+      filename: '[name].[hash:5].css',
+      chunkFilename: 'css/[name].[hash:5].css',
     }),
   );
 }
@@ -50,8 +49,8 @@ module.exports = {
   entry: resolve('../src/main.js'),
   output: {
     path: resolve('../dist'),
-    filename: `js/[name].[hash:5].${version}.js`,
-    chunkFilename: `js/[name].[hash:5].${version}.js`,
+    filename: 'js/[name].[hash:5].js',
+    chunkFilename: 'js/[name].[hash:5].js',
   },
   resolve: {
     extensions: ['.js', '.json', '.vue'],

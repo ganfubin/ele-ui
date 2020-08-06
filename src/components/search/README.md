@@ -3,35 +3,7 @@
 ```javascript
 search: [
     {
-    type: 'BUTTONMORE',
-    attrs: {
-      list: [
-        {
-          label: '手动触发扫描',
-          click: () => {
-            console.log(this)
-          }
-        },
-        {
-          label: 'l离线数据模板下载',
-          click: () => {
-          }
-        },
-        {
-          label: '离线数据上传',
-          click: () => {
-          }
-        },
-        {
-          label: '指标翻译模板上传',
-          click: () => {
-          }
-        }
-      ]
-    },
-  },
-    {
-      type: 'BUTTON', // 类型 [BUTTON, SELECT, QUERY, BUTTONMORE]
+      type: 'BUTTON', // 类型 [BUTTON, SELECT, QUERY]
       attrs: { // attrs 参数
         label: '我是一个按钮',
         style: 'color: #0062DD',
@@ -82,6 +54,5 @@ search: [
 ```javascript
 对比较常用的字段解释
 key：表示对这个类型传出值的键值key
-
 
 ```

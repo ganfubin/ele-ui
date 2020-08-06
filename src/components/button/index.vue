@@ -20,7 +20,6 @@ export default {
   },
   created() {
     this.clickFn = _.debounce(() => {
-      console.log(1111);
       this.$emit('click');
     },
     this.debounce,

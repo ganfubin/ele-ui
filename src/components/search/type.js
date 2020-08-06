@@ -14,14 +14,15 @@ export default {
 
     },
   },
-  BUTTONMORE: {
-    attrs: {
-
-    },
-  },
   SELECT: {
     attrs: {
-
+      placeholder: '请选择',
+      options: [],
+    },
+  },
+  DATE: {
+    attrs: {
+      placeholder: '请选择',
     },
   },
   CASCADER: {
@@ -31,7 +32,7 @@ export default {
   },
   QUERY: {
     attrs: {
-
+      placeholder: '请输入',
     },
   },
 };
